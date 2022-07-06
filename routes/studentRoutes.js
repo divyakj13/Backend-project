@@ -5,5 +5,5 @@ const studentRouter = express.Router();
 studentRouter.get("/",getAllStudent);
 studentRouter.post("/",signup);
 studentRouter.get("/:id" ,getStudentById);
-studentRouter.get("/:name/:password",getLogin);
+// studentRouter.get("/:name/:password",getLogin);
 module.exports = studentRouter;
