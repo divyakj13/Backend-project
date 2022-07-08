@@ -7,10 +7,11 @@ const Student = mongoose.model('Student',{
     email:{type:String},
     phone:{type:String},
     Confirmpassword:{type:String},
-    gender:{type:String}
+    gender:{type:String},
+    role:{type:String}
 });
 
-module.exports={Student};
+module.exports=Student;
 
 
 
@@ -65,4 +66,5 @@ module.exports={Student};
 
 // });
 
-// module.exports=mongoose.model("student",studentSchema);
+// const Student=mongoose.model("Student",studentSchema);
+// module.exports = Student
