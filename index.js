@@ -7,6 +7,7 @@ const cors = require('cors');
 const studentRoutes=require('./routes/studentRoutes')
 const holidayRoutes=require('./routes/holidayRoutes')
 const loginRoutes=require('./routes/loginRoutes')
+// const Middleware=require('./Middlewares/auth')
 
 // const fileRoutes=require('./routes/fileRoutes')
 const app=express();
@@ -25,4 +26,5 @@ app.use('/student',studentRoutes);
 app.use('/holiday',holidayRoutes);
 // app.use('/file',fileRoutes);
 app.use('/login',loginRoutes);
-app.use('/students',router)
+app.use('/students',router);
+// app.use('/auth',Middleware);

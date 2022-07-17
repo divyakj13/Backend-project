@@ -4,21 +4,17 @@ const login = require('../model/login');
 const router = express.Router()
 const mongoose = require('../db');
 const jwt = require('jsonwebtoken')
+const bodyParser = require("body-parser");
+
 
 function verifyToken(req, res, next) {
-
     if (!req.headers.authorization) {
-    
     return res.status(401).send('Unauthorized request')
-    
     }
     
     let token = req.headers.authorization.split('')[1]
-    
     if (token === 'null') {
-    
-    return res.status(401).send('Unauthorized request');
-    
+    return res.status(401).send('Unauthorized request'); 
     }
     
     let payload = jwt.verify(token, 'secretKey')
@@ -56,7 +52,6 @@ let payload = { subject: registeredUser._id }
 let token = jwt.sign(payload, 'secretKey')
 res.status(200).send({ token })
 
-// res.status(200).send(registeredUser);
 }
 })
 
@@ -69,9 +64,6 @@ router.post('/login', async(req, res) => {
     login.findOne({ regNum: userData.regNum }, (error, user) => {
     
     if (error) {
-    
-    console.log(error)
-    
     }
     
     else {
@@ -95,10 +87,6 @@ router.post('/login', async(req, res) => {
     let token = jwt.sign(payload, 'secretKey')
     
     res.status(200).send({ token })
-    
-    
-    
-    // res.status(200).send('Successfully logged in :)')
     
     }
     

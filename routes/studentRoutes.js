@@ -2,9 +2,8 @@ var express = require('express');
 const {getAllStudent,signup,getStudentById,deleteStudent} = require('../controller/studentController');
 const studentRouter = express.Router();
 
-studentRouter.get("/",isAuthenticatedUser,getAllStudent);
-studentRouter.post("/",isAuthenticatedUser,signup);
-studentRouter.get("/:id" ,isAuthenticatedUser,getStudentById);
-studentRouter.delete("/:id",isAuthenticatedUser,deleteStudent);
-// studentRouter.get("/:name/:password",getLogin);
+studentRouter.get("/",getAllStudent);
+studentRouter.post("/",signup);
+studentRouter.get("/:id" ,getStudentById);
+studentRouter.delete("/:id",deleteStudent);
 module.exports = studentRouter;
