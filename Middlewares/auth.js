@@ -15,7 +15,6 @@ exports.isAuthenticatedUser = async( req,res,next)=>{
     if(!data){
         return res.status(401).send("access denied ,Please login")
     }
-    
 
     req.name=data.name
     next()

@@ -5,7 +5,9 @@ var {Holiday}= require('../model/holiday');
 
 const getHoliday= async (req,res)=>{
     Holiday.find((err,docs)=>{
-        if(!err){res.send(docs);}
+        // if(!err){res.send(docs);}
+        if(!err){res.json(docs);
+        }
         else{
             res.status(404).send("error in get Holiday ")
         }
@@ -35,7 +37,7 @@ const gettingHoliday = async (req,res)=>{
     });
     holi.save((err,doc)=>{
         if(!err){res.send(doc);}
-        else{ res.status(404).send("error in post holidau ")}
+        else{ res.status(404).send("error in post holiday ")}
     });
 };
 

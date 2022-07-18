@@ -28,10 +28,7 @@ function verifyToken(req, res, next) {
     req.userId = payload.subject;
     
     next()
-    
     }
-    
-    
     
     router.get('/', (req, res) => {
     
