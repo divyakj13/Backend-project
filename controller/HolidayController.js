@@ -1,13 +1,10 @@
 const express=require('express');
-var router = express.Router();
 var ObjectId= require('mongoose').Types.ObjectId;
 var {Holiday}= require('../model/holiday');
 
-const getHoliday= async (req,res)=>{
+const getHoliday= (req,res)=>{
     Holiday.find((err,docs)=>{
-        // if(!err){res.send(docs);}
-        if(!err){res.json(docs);
-        }
+        if(!err){res.send(docs);}
         else{
             res.status(404).send("error in get Holiday ")
         }
@@ -15,7 +12,7 @@ const getHoliday= async (req,res)=>{
 };
 
 
-const getHolidayById = async (req,res)=>{
+const getHolidayById = (req,res)=>{
     if(!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -30,7 +27,7 @@ const getHolidayById = async (req,res)=>{
 };
 
 
-const gettingHoliday = async (req,res)=>{
+const gettingHoliday = (req,res)=>{
     var holi=new Holiday({
         date:req.body.date,
         descrip:req.body.descrip,
@@ -55,6 +52,7 @@ const putHoliday= async (req,res)=>{
         else{ res.status(404).send("error in put holiday ")}
     });
 };
+
 const deleteHoliday=async(req,res)=>{
 
          if(!ObjectId.isValid(req.params.id))

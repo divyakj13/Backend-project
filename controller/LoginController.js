@@ -1,12 +1,10 @@
 const express = require('express');
-var router = express.Router();
-const bodyParser = require('body-parser');
 var { Login } = require('../model/login');
 const  Student = require('../model/student');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
-const getLogin = async (req, res) => {
+const getLogin =  (req, res) => {
     Login.find((err, docs) => {
         if (!err) { res.send(docs); }
         else {  res.status(404).send("error in login ") }
@@ -31,28 +29,9 @@ const checking = async (req, res) => {
 }
 }
 
-const postLogin = async (req, res) => {
-    var log = new Login({
-        regNum: req.body.regNum,
-        password: req.body.password,
-        role: req.body.role
-    });
-    log.save((err, doc) => {
-        if (!err) {
-            let payload={subject:doc._id}
-            let token=jwt
-            res.status(200).send({ doc, message: 'registered successfully' });
-        }
-        else {  res.status(404).send("error in posting login") };
-    });
-};
-
-
-
 
 
 module.exports = {
     getLogin: getLogin,
-    postLogin: postLogin,
     checking:checking
 }

@@ -1,11 +1,12 @@
 var express = require('express');
 const {getHoliday,gettingHoliday,getHolidayById,putHoliday,deleteHoliday}= require('../controller/HolidayController');
-const holidayRouter = express.Router();
+const holidayRoutes = express.Router();
+const {isAuthenticatedUser}=require('../Middlewares/auth')
 
-holidayRouter.get("/",getHoliday);
-holidayRouter.post("/",gettingHoliday);
-holidayRouter.get("/:id" ,getHolidayById);
-holidayRouter.put("/:id",putHoliday);
-holidayRouter.delete("/:id",deleteHoliday);
+holidayRoutes.get("/",getHoliday);
+holidayRoutes.post("/",isAuthenticatedUser,gettingHoliday);
+holidayRoutes.get("/:id" ,isAuthenticatedUser,getHolidayById);
+holidayRoutes.put("/:id",isAuthenticatedUser,putHoliday);
+holidayRoutes.delete("/:id",isAuthenticatedUser,deleteHoliday);
 
-module.exports = holidayRouter;
+module.exports = holidayRoutes;

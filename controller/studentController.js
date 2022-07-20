@@ -1,18 +1,17 @@
 const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
-
 var  Student  = require('../model/student');
 
 
-const getAllStudent = async (req, res) => {
+const getAllStudent =  (req, res) => {
     Student.find((err, docs) => {
         if (!err) { res.send(docs); }
         else {  res.status(404).send("error in getting student") }
     });
 };
 
-const getStudentById = async (req, res) => {
+const getStudentById =  (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with given id : ${req.parmas.id}`);
     Student.findById(req.params.id, (err, doc) => {
@@ -21,7 +20,7 @@ const getStudentById = async (req, res) => {
     });
 };
 
-const signup = async (req, res) => {
+const signup =  (req, res) => {
     var stu = new Student({
 
         username: req.body.username,
@@ -39,7 +38,7 @@ const signup = async (req, res) => {
     });
 };
 
-const deleteStudent = async (req, res) => {
+const deleteStudent =  (req, res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send(`No record with the given id : $(req.params.id)`);
     try {

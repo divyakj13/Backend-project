@@ -1,6 +1,6 @@
 const jwt= require('jsonwebtoken')
 require('dotenv').config();
-// const login =require('../model/login')
+
 
 exports.isAuthenticatedUser = async( req,res,next)=>{
     if(!req.headers.authorization){
@@ -16,6 +16,5 @@ exports.isAuthenticatedUser = async( req,res,next)=>{
         return res.status(401).send("access denied ,Please login")
     }
 
-    req.name=data.name
     next()
 }

@@ -2,9 +2,9 @@
 const express = require('express');
 const login = require('../model/login');
 const router = express.Router()
-const mongoose = require('../db');
+
 const jwt = require('jsonwebtoken')
-const bodyParser = require("body-parser");
+
 
 
 function verifyToken(req, res, next) {

@@ -1,9 +1,10 @@
 var express = require('express');
 const {getAllStudent,signup,getStudentById,deleteStudent} = require('../controller/studentController');
-const studentRouter = express.Router();
+const studentRoutes = express.Router();
+const isAuthenticatedUser=require('../Middlewares/auth')
 
-studentRouter.get("/",getAllStudent);
-studentRouter.post("/",signup);
-studentRouter.get("/:id" ,getStudentById);
-studentRouter.delete("/:id",deleteStudent);
-module.exports = studentRouter;
+studentRoutes.get("/",getAllStudent);
+studentRoutes.post("/",signup);
+studentRoutes.get("/:id" ,getStudentById);
+studentRoutes.delete("/:id",deleteStudent);
+module.exports = studentRoutes;
